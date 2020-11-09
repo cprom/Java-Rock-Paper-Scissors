@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -73,8 +74,7 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		frame.add(scissorsBtn);
 		
 		
-		ImageIcon image = new ImageIcon("fuzzi_logic_logo.png");
-		frame.setIconImage(image.getImage());
+		
 	
 		
 //		//get choice from player
