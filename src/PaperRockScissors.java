@@ -21,6 +21,10 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 	
 	PaperRockScissors(){
 		
+		ImageIcon paperIcon = new ImageIcon("paper.png");
+		ImageIcon rockIcon = new ImageIcon("rock.png");
+		ImageIcon scissorsIcon = new ImageIcon("scissors.png");
+		
 		JPanel title_panel = new JPanel();
 		title_panel.setLayout(new BorderLayout());
 		
@@ -28,14 +32,20 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		paperBtn = new JButton();
 		paperBtn.setBounds(50,130,120,120);
 		paperBtn.addActionListener(this);
+		paperBtn.setFocusable(false);
+		paperBtn.setIcon(paperIcon);
 		
 		rockBtn = new JButton();
 		rockBtn.setBounds(240,130,120,120);
 		rockBtn.addActionListener(this);
+		rockBtn.setFocusable(false);
+		rockBtn.setIcon(rockIcon);
 		
-		 scissorsBtn = new JButton();
+		scissorsBtn = new JButton();
 		scissorsBtn.setBounds(430,130,120,120);
 		scissorsBtn.addActionListener(this);
+		scissorsBtn.setFocusable(false);
+		scissorsBtn.setIcon(scissorsIcon);
 		
 		
 		//Add title inside frame
@@ -54,7 +64,7 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		frame.setTitle("Rock Paper Scissors");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //.HIDE_ON_CLOSE IS default.  Set to .EXIT_ON_CLOSE 
 		frame.setResizable(false);//prevent frame from being resize
-		frame.setSize(600, 400); //sets x and y dimension
+		frame.setSize(600, 500); //sets x and y dimension
 		frame.setLayout(null);
 		frame.setVisible(true); //make frame visible
 		frame.add(callToAction);
