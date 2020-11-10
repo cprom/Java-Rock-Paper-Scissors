@@ -4,9 +4,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import java.util.Scanner;
-
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -136,29 +133,6 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		frame.add(userScore);
 		frame.add(comScore);
 		frame.add(tieScore);
-		
-		
-	
-		
-//		//get choice from player
-//		Scanner scanner = new Scanner(System.in);
-//		
-//		System.out.println("Enter:\n \"P\" for Paper\n \"R\" for Rock\n \"S\" for Scissors");
-//		String playerChoice = scanner.nextLine();
-//		
-//		if(playerChoice.equals("p")|| playerChoice.equals("P")) {
-//			playerChoice = "Paper";
-//		System.out.println("You chose " + playerChoice);
-//	}
-//		if(playerChoice.equals("r")|| playerChoice.equals("R")) {
-//			playerChoice = "Rock";
-//			System.out.println("You chose " + playerChoice);
-//		}
-//		if(playerChoice.equals("s")|| playerChoice.equals("S")) {
-//			playerChoice = "Scissors";
-//			System.out.println("You chose " + playerChoice);
-//		}
-//		
 		
 		
 	
