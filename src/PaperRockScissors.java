@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.swing.BorderFactory;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +19,17 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 	JButton rockBtn;
 	JButton scissorsBtn;
 	String playerChoice;
+	String cpuChoice;
+	int score = 0;
+	int tie	= 0;
+	int cpuScore = 0;
+	JLabel playerChoiceText;
+	JLabel cpuChoiceText;
+	JLabel winnerText;
+	JLabel userScore;
+	JLabel comScore;
+	JLabel tieScore;
+	
 	
 	PaperRockScissors(){
 		
@@ -33,32 +44,79 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		paperBtn = new JButton();
 		paperBtn.setBounds(50,130,120,120);
 		paperBtn.addActionListener(this);
-		paperBtn.setFocusable(false);
 		paperBtn.setIcon(paperIcon);
 		
 		rockBtn = new JButton();
 		rockBtn.setBounds(240,130,120,120);
 		rockBtn.addActionListener(this);
-		rockBtn.setFocusable(false);
 		rockBtn.setIcon(rockIcon);
 		
 		scissorsBtn = new JButton();
 		scissorsBtn.setBounds(430,130,120,120);
 		scissorsBtn.addActionListener(this);
-		scissorsBtn.setFocusable(false);
 		scissorsBtn.setIcon(scissorsIcon);
 		
 		
-		//Add title inside frame
+		//Add text inside frame
 		JLabel callToAction = new JLabel();
 		callToAction.setText("Choose Your Weapon");
 		callToAction.setHorizontalAlignment(JLabel.CENTER);
 		callToAction.setVerticalAlignment(JLabel.NORTH);
-		callToAction.setForeground(new Color(0xFF0000));
+		callToAction.setForeground(Color.black);
 		callToAction.setFont(new Font("Helvetica", Font.BOLD,35));
 		callToAction.setBounds(0,30,600,100);
 		
+		//Display Choices in GUI
 		
+		playerChoiceText = new JLabel();
+		playerChoiceText.setHorizontalAlignment(JLabel.RIGHT);
+		playerChoiceText.setVerticalAlignment(JLabel.BOTTOM);
+		playerChoiceText.setForeground(Color.green);
+		playerChoiceText.setFont(new Font("Helvetica", Font.BOLD,20));
+		playerChoiceText.setBounds(-90,200,300,100);
+		
+		cpuChoiceText = new JLabel();
+		cpuChoiceText.setHorizontalAlignment(JLabel.RIGHT);
+		cpuChoiceText.setVerticalAlignment(JLabel.BOTTOM);
+		cpuChoiceText.setForeground(Color.red);
+		cpuChoiceText.setFont(new Font("Helvetica", Font.BOLD,20));
+		cpuChoiceText.setBounds(220,200,300,100);
+		
+		//Display Winner 
+		winnerText = new JLabel();
+		winnerText.setHorizontalAlignment(JLabel.RIGHT);
+		winnerText.setVerticalAlignment(JLabel.BOTTOM);
+		winnerText.setForeground(Color.black);
+		winnerText.setFont(new Font("Helvetica", Font.BOLD,20));
+		winnerText.setBounds(0,250,300,100);
+		
+		//Display Player Score
+		userScore = new JLabel();
+		userScore.setText("Player: 0");
+		userScore.setHorizontalAlignment(JLabel.RIGHT);
+		userScore.setVerticalAlignment(JLabel.BOTTOM);
+		userScore.setForeground(Color.black);
+		userScore.setFont(new Font("Helvetica", Font.BOLD,20));
+		userScore.setBounds(-150,350,300,100);
+		
+		//Display Computer Score
+		comScore = new JLabel();
+		comScore.setText("CPU: 0");
+		comScore.setHorizontalAlignment(JLabel.RIGHT);
+		comScore.setVerticalAlignment(JLabel.BOTTOM);
+		comScore.setForeground(Color.black);
+		comScore.setFont(new Font("Helvetica", Font.BOLD,20));
+		comScore.setBounds(35,350,300,100);
+		
+		//Display Tie
+		tieScore = new JLabel();
+		tieScore.setText("Tie: 0");
+		tieScore.setHorizontalAlignment(JLabel.RIGHT);
+		tieScore.setVerticalAlignment(JLabel.BOTTOM);
+		tieScore.setForeground(Color.black);
+		tieScore.setFont(new Font("Helvetica", Font.BOLD,20));
+		tieScore.setBounds(220,350,300,100);
+				
 		
 		//JFrame
 		JFrame frame =  new JFrame();  //creates a frame
@@ -72,7 +130,12 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		frame.add(paperBtn);
 		frame.add(rockBtn);
 		frame.add(scissorsBtn);
-		
+		frame.add(playerChoiceText);
+		frame.add(cpuChoiceText);
+		frame.add(winnerText);
+		frame.add(userScore);
+		frame.add(comScore);
+		frame.add(tieScore);
 		
 		
 	
@@ -96,7 +159,7 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 //			System.out.println("You chose " + playerChoice);
 //		}
 //		
-		//get choice from Computer
+		
 		
 	
 	
@@ -105,48 +168,93 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==paperBtn) {
-			playerChoice = "Paper";
-			System.out.println("Player chose " + playerChoice);
+			playerChoice = "Paper";	
+			playerChoiceText.setText("Player:  " + playerChoice);	
+			System.out.println("Player: " + playerChoice);
+			
 		}
 		if(e.getSource()==rockBtn) {
 			playerChoice = "Rock";
-			System.out.println("Player chose " + playerChoice);
+			playerChoiceText.setText("Player:  " + playerChoice);
+			System.out.println("Player: " + playerChoice);
 		}
 		if(e.getSource()==scissorsBtn) {
 			playerChoice = "Scissors";
-			System.out.println("Player chose " + playerChoice);
+			playerChoiceText.setText("Player:  " + playerChoice);
+			System.out.println("Player: " + playerChoice);
 		}
-	String[] choiceArray = {"Rock","Paper","Scissors"};
+		
+		//get choice from Computer
+		String[] choiceArray = {"Rock","Paper","Scissors"};
 		
 		Random random = new Random();
 		
 		int cpuChoice = random.nextInt(choiceArray.length);
+		cpuChoiceText.setText("Computer: " + choiceArray[cpuChoice]);
 		
-		System.out.println("Computer Chose " + choiceArray[cpuChoice]);
+		System.out.println("Computer: " + choiceArray[cpuChoice]);
 		
 		//check winner
 		
 		if(playerChoice.equals(choiceArray[cpuChoice])) {
+			tie++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("It's a Tie");
 			System.out.println("It's a Tie");
 		}
 		if(playerChoice.equals("Paper") && choiceArray[cpuChoice].equals("Rock")) {
+			score++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("Player Wins");
 			System.out.println("Player Wins");
 		}
 		if(playerChoice.equals("Rock") && choiceArray[cpuChoice].equals("Scissors")) {
+			score++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("Player Wins");
 			System.out.println("Player Wins");
 		}
 		if(playerChoice.equals("Scissors") && choiceArray[cpuChoice].equals("Paper")) {
+			score++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("Player Wins");
 			System.out.println("Player Wins");
 		}
 		if(playerChoice.equals("Rock") && choiceArray[cpuChoice].equals("Paper")) {
+			cpuScore++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("Computer Wins");
 			System.out.println("Computer Wins");
 		}
 		if(playerChoice.equals("Scissors") && choiceArray[cpuChoice].equals("Rock")) {
+			cpuScore++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("Computer Wins");
 			System.out.println("Computer Wins");
 		}
 		if(playerChoice.equals("Paper") && choiceArray[cpuChoice].equals("Scissors")) {
+			cpuScore++;
+			userScore.setText("Player: " + score);
+			comScore.setText("Cpu: " + cpuScore);
+			tieScore.setText("Tie: " + tie);
+			winnerText.setText("Computer Wins");
 			System.out.println("Computer Wins");
+			
 		}
+		
 	}
 	
 }
+
