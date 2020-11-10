@@ -69,26 +69,26 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 		//Display Choices in GUI
 		
 		playerChoiceText = new JLabel();
-		playerChoiceText.setHorizontalAlignment(JLabel.RIGHT);
+		playerChoiceText.setHorizontalAlignment(JLabel.CENTER);
 		playerChoiceText.setVerticalAlignment(JLabel.BOTTOM);
 		playerChoiceText.setForeground(Color.green);
 		playerChoiceText.setFont(new Font("Helvetica", Font.BOLD,20));
-		playerChoiceText.setBounds(-90,200,300,100);
+		playerChoiceText.setBounds(0,200,300,100);
 		
 		cpuChoiceText = new JLabel();
-		cpuChoiceText.setHorizontalAlignment(JLabel.RIGHT);
+		cpuChoiceText.setHorizontalAlignment(JLabel.CENTER);
 		cpuChoiceText.setVerticalAlignment(JLabel.BOTTOM);
 		cpuChoiceText.setForeground(Color.red);
 		cpuChoiceText.setFont(new Font("Helvetica", Font.BOLD,20));
-		cpuChoiceText.setBounds(220,200,300,100);
+		cpuChoiceText.setBounds(250,200,300,100);
 		
 		//Display Winner 
 		winnerText = new JLabel();
-		winnerText.setHorizontalAlignment(JLabel.RIGHT);
+		winnerText.setHorizontalAlignment(JLabel.CENTER);
 		winnerText.setVerticalAlignment(JLabel.BOTTOM);
 		winnerText.setForeground(Color.black);
-		winnerText.setFont(new Font("Helvetica", Font.BOLD,20));
-		winnerText.setBounds(0,250,300,100);
+		winnerText.setFont(new Font("Helvetica", Font.BOLD,30));
+		winnerText.setBounds(150,270,300,100);
 		
 		//Display Player Score
 		userScore = new JLabel();
@@ -201,8 +201,8 @@ public class PaperRockScissors extends JFrame implements ActionListener {
 			userScore.setText("Player: " + score);
 			comScore.setText("Cpu: " + cpuScore);
 			tieScore.setText("Tie: " + tie);
-			winnerText.setText("It's a Tie");
-			System.out.println("It's a Tie");
+			winnerText.setText("Tie");
+			System.out.println("Tie");
 		}
 		if(playerChoice.equals("Paper") && choiceArray[cpuChoice].equals("Rock")) {
 			score++;
